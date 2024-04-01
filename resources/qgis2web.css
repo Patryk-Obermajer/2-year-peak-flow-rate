@@ -17,6 +17,7 @@ th, td {
 }
 
 .ol-popup {
+    z-index: 1000;
     display: none;
     position: absolute;
     background-color: white;

@@ -62,6 +62,7 @@ var sketch;
 closer.onclick = function() {
     container.style.display = 'none';
     closer.blur();
+    markerLayer.getSource().clear();
     return false;
 };
 var overlayPopup = new ol.Overlay({
@@ -81,7 +82,7 @@ var map = new ol.Map({
     overlays: [overlayPopup],
     layers: layersList,
     view: new ol.View({
-        extent: [123208.454833, -23363.953425, 533706.165442, 464685.171261], maxZoom: 28, minZoom: 1, projection: new ol.proj.Projection({
+        extent: [123208.454833, -23363.953425, 696041.000, 757003.00], maxZoom: 28, minZoom: 1, projection: new ol.proj.Projection({
             code: 'EPSG:27700',
             extent: [-20037508.342789, -20037508.342789, 20037508.342789, 20037508.342789],
             units: 'm'})
@@ -113,13 +114,26 @@ function getPopupFields(layerList, layer) {
     return popupLayers[idx];
 }
 
+//this is this pat shit
+var markerLayer = new ol.layer.Vector({
+    source: new ol.source.Vector(),
+    style: new ol.style.Style({
+        image: new ol.style.Circle({
+            radius: 6,
+            fill: new ol.style.Fill({color: 'red'}),
+            stroke: new ol.style.Stroke({color: 'red', width: 1}),
+        }),
+    }),
+});
+map.addLayer(markerLayer);
+//this is this pat shit
 
 var collection = new ol.Collection();
 var featureOverlay = new ol.layer.Vector({
     map: map,
     source: new ol.source.Vector({
         features: collection,
-        useSpatialIndex: false // optional, might improve performance
+        useSpatialIndex: true // optional, might improve performance
     }),
     style: [new ol.style.Style({
         stroke: new ol.style.Stroke({
@@ -169,7 +183,7 @@ function createPopupField(currentFeature, currentFeatureKeys, layer) {
             } else {
                 popupField += (currentFeature.get(currentFeatureKeys[i]) != null ? '<img src="images/' + currentFeature.get(currentFeatureKeys[i]).replace(/[\\\/:]/g, '_').trim() + '" /></td>' : '');
             }
-            popupText += '<tr>' + popupField + '</tr>';
+            popupText += '<tr>' + popupField +  '</tr>';
         }
     }
     return popupText;
@@ -284,6 +298,7 @@ var onPointerMove = function(evt) {
         } else {
             container.style.display = 'none';
             closer.blur();
+            markerLayer.getSource().clear(); //pat
         }
     }
 };
@@ -295,6 +310,13 @@ var onSingleClick = function(evt) {
     if (sketch) {
         return;
     }
+    //patt
+    var marker = new ol.Feature({
+        geometry: new ol.geom.Point(evt.coordinate),
+    });
+    markerLayer.getSource().clear(); // Clear previous marker
+    markerLayer.getSource().addFeature(marker);
+    //patt
     var pixel = map.getEventPixel(evt.originalEvent);
     var coord = evt.coordinate;
     var popupField;
@@ -769,7 +791,7 @@ map.on("rendercomplete", function(evt) {
         var qgisAttribution = document.createElement('li');
         qgisAttribution.innerHTML = '<a href="https://qgis.org/">QGIS</a>';
         var patAttribution = document.createElement('li');
-        patAttribution.innerHTML = '<a href="https://obermajer.co.uk/">Prepared by Pat</a> &middot; ';
+        patAttribution.innerHTML = '<a href="https://obermajer.co.uk/">Map prepared by Pat</a> &middot; ';
         var authorAttribution = document.createElement('li');
         authorAttribution.innerHTML = '<a href="https://obermajer.co.uk/">Contains Environment Agency Dataset</a> &middot; ';
         attributionList.insertBefore(authorAttribution, firstLayerAttribution);
