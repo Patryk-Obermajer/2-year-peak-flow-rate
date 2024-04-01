@@ -769,7 +769,7 @@ map.on("rendercomplete", function(evt) {
         var qgisAttribution = document.createElement('li');
         qgisAttribution.innerHTML = '<a href="https://qgis.org/">QGIS</a>';
         var patAttribution = document.createElement('li');
-        patAttribution.innerHTML = '<a href="https://obermajer.co.uk/">Its all thanks to Pat</a> &middot; ';
+        patAttribution.innerHTML = '<a href="https://obermajer.co.uk/">Prepared by Pat</a> &middot; ';
         var authorAttribution = document.createElement('li');
         authorAttribution.innerHTML = '<a href="https://obermajer.co.uk/">Contains Environment Agency Dataset</a> &middot; ';
         attributionList.insertBefore(authorAttribution, firstLayerAttribution);
