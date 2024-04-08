@@ -73,10 +73,11 @@ var expandedAttribution = new ol.control.Attribution({
     collapsible: false
 });
 
+
 var map = new ol.Map({
     controls: ol.control.defaults({attribution:false}).extend([
-        expandedAttribution,new ol.control.ScaleLine({}),new measureControl()
-    ]),
+        expandedAttribution,new ol.control.ScaleLine({}),new measureControl(),
+           ]),
     target: document.getElementById('map'),
     renderer: 'canvas',
     overlays: [overlayPopup],
