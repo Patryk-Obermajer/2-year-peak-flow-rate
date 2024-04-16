@@ -9,6 +9,7 @@
         <link rel="stylesheet" href="./resources/ol.css">
         <link rel="stylesheet" href="resources/fontawesome-all.min.css">
         <link rel="stylesheet" href="./resources/ol-layerswitcher.css">
+        <link rel="stylesheet" href="./resources/pat.css">
         <link rel="stylesheet" href="./resources/qgis2web.css">
         <link rel="stylesheet" href="./resources/pat-loader.css">
         <link rel="stylesheet" href="./resources/pat-snackbar.css">
@@ -132,7 +133,7 @@
           height: 70%;
         }
         </style>
-        <title>2-year return period peak flow rate</title>
+        <title>Web Map for 2-year return period peak flow rate</title>
 
 
     </head>
@@ -140,7 +141,7 @@
 
     <!-- Use a button to open the snackbar -->
     <body>
-      <div style="display: inline-block; margin:1%;"><h1> Review of methodology for estimating flood peaks and hydrographs for small catchments</h1><h2>2-year return period peak flow rate (l/s/ha)</h2></div>
+      <div style="display: inline-block; margin:1%;"><h1> Review of methodology for estimating flood peaks and hydrographs for small catchments</h1><h2>Web Map for 2-year return period peak flow rate (l/s/ha)</h2></div>
         <div id="map">
             <div id="popup" class="ol-popup">
                 <a href="#" id="popup-closer" class="ol-popup-closer"></a>
@@ -154,14 +155,26 @@
             <input id="opacity-input" type="range" min="0" max="1" step="0.01" value="0.8" />
             <span id="opacity-output"></span>
           </label>
-          <div>The presented data has been retrieved from here.</div>
+          <div>The underlying data presented has been retrieved from <br> <i>SC090031/R0/Appendix B - Free greenfield plot-scale peak flow rate and volume screening data. </i>.</div>
         </div>
       
         <button type="button" class="collapsible">Project Read Me</button>
 <div class="content">
-  <p>HELPFILE <br>Title: Free greenfield plot-scale peak flow rate and volume screening data usage<br>Project: SC090031<br>Last edited: 2019-10-08 - Griffin, A.<br><br>Free plot-scale peak flow rates and volume datasets are provided as part of Project SC090031 Estimating flood peaks and hydrographs for small catchments (Phase 2). <br><br>The data are 1 km raster grids of estimated plot-scale peak flow rate (l/s/ha) across England and Wales for return periods of 12 months, 2 years, 30 years and 100 years (note that a 12-month return period on the peaks-over-threshold scale equates to approximately a 1.58-year return period on the annual maximum scale).<br><br>The dataset also includes estimated values for peak flow rate (l/s/ha) and runoff volume (m3) corresponding to a 6-hour 100-year return period rainfall event.<br><br>This helpfile outlines the data provided and some guidelines for usage.<br><br>CONTENTS<br>Q1MAP.asc	      12-month return period peak flow rate<br>Q2MAP.asc	      2-year return period peak flow rate<br>Q30MAP.asc	    30-year return period peak flow rate<br>Q100MAP.asc	    100-year return period peak flow rate<br>Q6H100Y.asc	    6-hour 100-year return period peak flow rate<br>ROVOL6H100Y.asc	6-hour 100-year return period runoff volume<br><br>INFORMATION WARNING<br>These estimates of peak flow rates and runoff volume are on average more conservative than the FEH ReFH2 method, i.e. they are biased towards underestimating greenfield peak flow rates and runoff volume.<br><br>However, conservative estimates cannot be guaranteed for any individual point, and therefore the data should only be used for preliminary screening and to provide precautionary results for use at the pre-planning stage of new developments. <br><br>It is recommended that use of the data should be followed up by the use of the FEH ReFH2-FEH13 hydrological design package.<br><br>Before using the data within this archive, you must read and understand all limitations associated with the data.  Details are provided within this readme.txt and section 13.5 of the published report "SC090031 R0 Phase 2 overview report", available from: (https://www.gov.uk/flood-and-coastal-erosion-risk-management-research-reports/review-of-methodology-for-estimating-flood-peaks-and-hydrographs-for-small-catchments).<br><br>DATA INFORMATION<br>-	The gridded outputs consist of six ASCII gridded datasets at 1-km resolution, outlined in Table A2.1.<br>-	The cell centres lie on 1000m increments of the GB National Grid.<br>-	The grid extends from eastings -500m to 699500m, northings -500m to 1299500m.<br>-	Cells outside England and Wales have the no-data value -9999.<br>-	Estimated runoff rates are given in l/s/ha and estimated volume in m3.<br><br><br>USAGE GUIDELINES<br>For small plot-scale sites, the value of the closest grid cell centroid should be selected.<br><br>Interpolation methods may not give a more reliable answer than simply taking the closest value. <br><br>If an interpolation scheme is used, a simple inverse-distance scheme would be appropriate.<br><br>To use this method:<br>Identify the values for up to 4 grid posts nearest to the site centroid. <br>Identify the distance from the site centroid to each grid post and take an inverse-distance weighted average of the grid post values.<br><br>This is suitable for a site much less than 50 ha in size. For larger sites, users should make their own judgement about the spatial variation in runoff rates across the site based on local   information on soils.</p>
+  <p><strong>The contents below have been copied verbatim from R0_Appendix_B_-_Greenfield_plot-scale_peak_flow_rate_and_volume_screening_data\README.txt </strong> <br><br> HELPFILE <br>Title: Free greenfield plot-scale peak flow rate and volume screening data usage<br>Project: SC090031<br>Last edited: 2019-10-08 - Griffin, A.<br><br>Free plot-scale peak flow rates and volume datasets are provided as part of Project SC090031 Estimating flood peaks and hydrographs for small catchments (Phase 2). <br><br>The data are 1 km raster grids of estimated plot-scale peak flow rate (l/s/ha) across England and Wales for return periods of 12 months, 2 years, 30 years and 100 years (note that a 12-month return period on the peaks-over-threshold scale equates to approximately a 1.58-year return period on the annual maximum scale).<br><br>The dataset also includes estimated values for peak flow rate (l/s/ha) and runoff volume (m3) corresponding to a 6-hour 100-year return period rainfall event.<br><br>This helpfile outlines the data provided and some guidelines for usage.<br><br>CONTENTS<br>Q1MAP.asc	      12-month return period peak flow rate<br>Q2MAP.asc	      2-year return period peak flow rate<br>Q30MAP.asc	    30-year return period peak flow rate<br>Q100MAP.asc	    100-year return period peak flow rate<br>Q6H100Y.asc	    6-hour 100-year return period peak flow rate<br>ROVOL6H100Y.asc	6-hour 100-year return period runoff volume<br><br>INFORMATION WARNING<br>These estimates of peak flow rates and runoff volume are on average more conservative than the FEH ReFH2 method, i.e. they are biased towards underestimating greenfield peak flow rates and runoff volume.<br><br>However, conservative estimates cannot be guaranteed for any individual point, and therefore the data should only be used for preliminary screening and to provide precautionary results for use at the pre-planning stage of new developments. <br><br>It is recommended that use of the data should be followed up by the use of the FEH ReFH2-FEH13 hydrological design package.<br><br>Before using the data within this archive, you must read and understand all limitations associated with the data.  Details are provided within this readme.txt and section 13.5 of the published report "SC090031 R0 Phase 2 overview report", available from: (https://www.gov.uk/flood-and-coastal-erosion-risk-management-research-reports/review-of-methodology-for-estimating-flood-peaks-and-hydrographs-for-small-catchments).<br><br>DATA INFORMATION<br>-	The gridded outputs consist of six ASCII gridded datasets at 1-km resolution, outlined in Table A2.1.<br>-	The cell centres lie on 1000m increments of the GB National Grid.<br>-	The grid extends from eastings -500m to 699500m, northings -500m to 1299500m.<br>-	Cells outside England and Wales have the no-data value -9999.<br>-	Estimated runoff rates are given in l/s/ha and estimated volume in m3.<br><br><br>USAGE GUIDELINES<br>For small plot-scale sites, the value of the closest grid cell centroid should be selected.<br><br>Interpolation methods may not give a more reliable answer than simply taking the closest value. <br><br>If an interpolation scheme is used, a simple inverse-distance scheme would be appropriate.<br><br>To use this method:<br>Identify the values for up to 4 grid posts nearest to the site centroid. <br>Identify the distance from the site centroid to each grid post and take an inverse-distance weighted average of the grid post values.<br><br>This is suitable for a site much less than 50 ha in size. For larger sites, users should make their own judgement about the spatial variation in runoff rates across the site based on local   information on soils.</p>
 </div>
       </div>
+      <footer id="myFooter">
+        <div class="pat-container pat-theme-l2 pat-padding-32" style="position: relative;">
+          <h2>Web Map for SC090031/R0/Appendix B</h2>
+          <h5>© Environment Agency copyright and/or database right 2024</h5> 
+          <h5>Map prepared by Pat Obermajer</h5> 
+          <h5><a href="http://obermajer.co.uk" target="_blank">obermajer.co.uk</a></h5>
+          <!-- <h5>© <span id="year"></span> Pat Obermajer</h5>  -->
+        </div>
+      </footer>
+    <script>
+        document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
         <script src="resources/qgis2web_expressions.js"></script>
 <script src="resources/proj4.js"></script>
         <script>proj4.defs('EPSG:27700','+proj=tmerc +lat_0=49 +lon_0=-2 +k=0.9996012717 +x_0=400000 +y_0=-100000 +ellps=airy +units=m +no_defs');</script>
