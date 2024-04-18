@@ -115,8 +115,22 @@
   outline: none;
   font-size: 15px;
 }
+.pat-button {
+  background-color: #777;
+  color: white;
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 15px;
+}
 
 .active, .collapsible:hover {
+  background-color: #555;
+}
+.active, .pat-button:hover {
   background-color: #555;
 }
 
@@ -156,14 +170,19 @@
             <span id="opacity-output"></span>
           </label>
           <div>The underlying data presented has been retrieved from <br> <i>SC090031/R0/Appendix B - Free greenfield plot-scale peak flow rate and volume screening data.</i></div>
-          <div>© Environment Agency copyright and/or database right 2024</div>
+          <br>
+          <div>Environment Agency (2024). Estimating flood peaks and hydrographs for small catchments: Appendix B to SC90031/R0 – overview report. Environment Agency, Bristol, UK</div>
+          <br>
+          <div>Make sure to review to review the <a href="#projectReadMe" onclick="expandSection(event)">README section</a> below and have a look at <a href="https://assets.publishing.service.gov.uk/media/65fd9d70f1d3a0001132ae54/Estimating_flood_peaks_and_hydrographs_for_small_catchments_-_R0_-_Overview_report.pdf" target="_blank">SC090031/R0 - overview report</a></div>
         </div>
       
-        <button type="button" class="collapsible">Project Read Me</button>
+        <button type="button" class="collapsible" id="projectReadMe" href="#projectReadMe">Project README</button>
 <div class="content">
   <p><strong>The contents below have been copied verbatim from R0_Appendix_B_-_Greenfield_plot-scale_peak_flow_rate_and_volume_screening_data\README.txt </strong> <br><br> HELPFILE <br>Title: Free greenfield plot-scale peak flow rate and volume screening data usage<br>Project: SC090031<br>Last edited: 2019-10-08 - Griffin, A.<br><br>Free plot-scale peak flow rates and volume datasets are provided as part of Project SC090031 Estimating flood peaks and hydrographs for small catchments (Phase 2). <br><br>The data are 1 km raster grids of estimated plot-scale peak flow rate (l/s/ha) across England and Wales for return periods of 12 months, 2 years, 30 years and 100 years (note that a 12-month return period on the peaks-over-threshold scale equates to approximately a 1.58-year return period on the annual maximum scale).<br><br>The dataset also includes estimated values for peak flow rate (l/s/ha) and runoff volume (m3) corresponding to a 6-hour 100-year return period rainfall event.<br><br>This helpfile outlines the data provided and some guidelines for usage.<br><br>CONTENTS<br>Q1MAP.asc	      12-month return period peak flow rate<br>Q2MAP.asc	      2-year return period peak flow rate<br>Q30MAP.asc	    30-year return period peak flow rate<br>Q100MAP.asc	    100-year return period peak flow rate<br>Q6H100Y.asc	    6-hour 100-year return period peak flow rate<br>ROVOL6H100Y.asc	6-hour 100-year return period runoff volume<br><br>INFORMATION WARNING<br>These estimates of peak flow rates and runoff volume are on average more conservative than the FEH ReFH2 method, i.e. they are biased towards underestimating greenfield peak flow rates and runoff volume.<br><br>However, conservative estimates cannot be guaranteed for any individual point, and therefore the data should only be used for preliminary screening and to provide precautionary results for use at the pre-planning stage of new developments. <br><br>It is recommended that use of the data should be followed up by the use of the FEH ReFH2-FEH13 hydrological design package.<br><br>Before using the data within this archive, you must read and understand all limitations associated with the data.  Details are provided within this readme.txt and section 13.5 of the published report "SC090031 R0 Phase 2 overview report", available from: (https://www.gov.uk/flood-and-coastal-erosion-risk-management-research-reports/review-of-methodology-for-estimating-flood-peaks-and-hydrographs-for-small-catchments).<br><br>DATA INFORMATION<br>-	The gridded outputs consist of six ASCII gridded datasets at 1-km resolution, outlined in Table A2.1.<br>-	The cell centres lie on 1000m increments of the GB National Grid.<br>-	The grid extends from eastings -500m to 699500m, northings -500m to 1299500m.<br>-	Cells outside England and Wales have the no-data value -9999.<br>-	Estimated runoff rates are given in l/s/ha and estimated volume in m3.<br><br><br>USAGE GUIDELINES<br>For small plot-scale sites, the value of the closest grid cell centroid should be selected.<br><br>Interpolation methods may not give a more reliable answer than simply taking the closest value. <br><br>If an interpolation scheme is used, a simple inverse-distance scheme would be appropriate.<br><br>To use this method:<br>Identify the values for up to 4 grid posts nearest to the site centroid. <br>Identify the distance from the site centroid to each grid post and take an inverse-distance weighted average of the grid post values.<br><br>This is suitable for a site much less than 50 ha in size. For larger sites, users should make their own judgement about the spatial variation in runoff rates across the site based on local   information on soils.</p>
 </div>
       </div>
+      <button type="button" class="pat-button" onclick="window.open('https://www.gov.uk/flood-and-coastal-erosion-risk-management-research-reports/review-of-methodology-for-estimating-flood-peaks-and-hydrographs-for-small-catchments', '_blank')">Visit Project Website (external) - Flood and Coastal Erosion Risk Management (FCERM) research reports</button>
+
       <footer id="myFooter">
         <div class="pat-container pat-theme-l2 pat-padding-32" style="position: relative;">
           <h2>Web Map for SC090031/R0/Appendix B - Q2MAP - 2-year return period peak flow rate</h2>
@@ -207,5 +226,42 @@ for (i = 0; i < coll.length; i++) {
   });
 }
         </script>
+        <script>
+          // Function to handle the link click
+          function expandSection(event) {
+              event.preventDefault(); // Prevent the default anchor click behavior
+          
+              // Find the collapsible button and simulate a click on it
+              var collapsible = document.getElementById('projectReadMe');
+              var content = collapsible.nextElementSibling;
+          
+              // Simulate a click on the collapsible
+              collapsible.click();
+          
+              // Scroll to the collapsible section
+              collapsible.scrollIntoView({behavior: 'smooth', block: 'start'});
+          
+              // Optionally, you can add a check to only expand if it's not already expanded
+              if (!collapsible.classList.contains('active')) {
+                  collapsible.classList.add('active');
+                  content.style.maxHeight = content.scrollHeight + "px";
+              }
+          }
+          
+          // Your existing collapsible code should still work fine
+          var coll = document.getElementsByClassName("collapsible");
+          for (var i = 0; i < coll.length; i++) {
+              coll[i].addEventListener("click", function() {
+                  this.classList.toggle("active");
+                  var content = this.nextElementSibling;
+                  if (content.style.maxHeight){
+                      content.style.maxHeight = null;
+                  } else {
+                      content.style.maxHeight = content.scrollHeight + "px";
+                  }
+              });
+          }
+          </script>
+          
     </body>
 </html>
