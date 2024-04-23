@@ -1,1 +1,1 @@
-A simple Web Map for Estimating flood peaks and hydrographs for small catchments info from EA. Built using QGIS2WEB, open layers and lots of HTML/CSS/JS by Pat. Feel free to get in touch or suggest any improvements.
+A simple Web Map for Estimating flood peaks and hydrographs for small catchments info from EA. Built using QGIS2WEB, OpenLayers and lots of HTML/CSS/JS by Pat. Feel free to get in touch or suggest any improvements.
